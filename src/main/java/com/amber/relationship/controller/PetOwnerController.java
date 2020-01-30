@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.GeneratedValue;
 import java.util.List;
 
 @Controller
@@ -45,6 +46,10 @@ public class PetOwnerController {
     }
 
     //! CREATE VET
+    @GetMapping("/test")
+    public String testing(){
+        return "test";
+    }
     @GetMapping("/pet-owner/create/vet")
     public String showAddVet( Model model){
        List<PetOwner> owners = petOwnerDao.findAll();
