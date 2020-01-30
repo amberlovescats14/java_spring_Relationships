@@ -1,6 +1,7 @@
 package com.amber.relationship.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class PetOwner {
@@ -20,6 +21,9 @@ public class PetOwner {
 
     @OneToOne(mappedBy = "petOwner")
     private Vet vet;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "petOwner")
+    private List<Pet> pets;
 
     public PetOwner() {
     }
@@ -62,5 +66,25 @@ public class PetOwner {
 
     public void setVet(Vet vet) {
         this.vet = vet;
+    }
+
+    public List<Pet> getPets() {
+        return pets;
+    }
+
+    public void setPets(List<Pet> pets) {
+        this.pets = pets;
+    }
+
+    @Override
+    public String toString() {
+        return "PetOwner{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", vet=" + vet +
+                ", pets=" + pets.toString() +
+                '}';
     }
 }

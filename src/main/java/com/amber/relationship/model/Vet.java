@@ -18,6 +18,11 @@ public class Vet {
 
     public Vet() {
     }
+    public Vet(String vetName, String phoneNumber, PetOwner petOwner){
+        this.vetName = vetName;
+        this.phoneNumber = phoneNumber;
+        this.petOwner = petOwner;
+    }
 
     public long getId() {
         return id;

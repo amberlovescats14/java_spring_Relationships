@@ -1,14 +1,33 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:include="partials/partial :: head(Pets)">
     <meta charset="UTF-8">
     <title>Owners</title>
 </head>
 <body>
-<h1>hello</h1>
-<div th:each="petOwner: ${petOwners}">
-    <h1 th:text="${petOwner.name}"></h1>
+<nav th:include="partials/partial :: nav"></nav>
+<h1>All Users</h1>
+<div class="row" style="margin: auto">
+    <div th:each="petOwner: ${petOwners}"
+         class="card col s5 teal accent-2"
+         style="height: 200px !important; margin: 20px !important;">
+        <div class="card-content">
+        <h1 th:text="${petOwner.name.toUpperCase()}"
+            class="card-title"></h1>
+            <div class="card-title">
+                Vet:
+        <span th:text="*{petOwner.vet != null}? *{petOwner.vet.vetName} : ('None listed')">None Listed</span>
+            </div>
+            <div>
+            Pets:
+        <span th:each="pet : ${petOwner.pets}">
+            <span th:text="${pet.name}"></span>
+        </span>
+            </div>
+        </div>
+    </div>
 </div>
+
 
 </body>
 </html>
